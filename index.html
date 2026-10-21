@@ -106,6 +106,34 @@ nav.open{display:flex}
 form{grid-template-columns:1fr}
 .diff li{gap:.4rem}
 }
+
+.hero-art{padding:0 1rem 0 0}
+.art{position:relative;aspect-ratio:10/11;border-radius:999px 999px var(--r) var(--r);background:linear-gradient(170deg,#e4ecde,var(--sage));overflow:hidden;box-shadow:0 24px 60px rgba(43,74,50,.2)}
+.art svg,.art .photo{position:absolute;inset:0;width:100%;height:100%;display:block}.art .photo{object-fit:cover}
+.badge{position:absolute;top:3.5rem;right:-.4rem;background:var(--forest);color:#fff;border-radius:18px;padding:.8rem 1.1rem;display:flex;gap:.7rem;align-items:center;max-width:15rem;font-size:.85rem;line-height:1.3;box-shadow:0 12px 30px rgba(43,74,50,.3);animation:fl 5s ease-in-out infinite alternate}
+.badge b{font:2.6rem/1 "DM Serif Display",serif}
+.draw{stroke-dasharray:420;stroke-dashoffset:420;animation:dr 1.6s .4s ease forwards}
+.beat{transform-box:fill-box;transform-origin:center;animation:bt 2.8s ease-in-out infinite}
+.lf{transform-box:fill-box;transform-origin:center;animation:fl 5s ease-in-out infinite alternate}.l2{animation-delay:-2s}.l3{animation-delay:-3.5s}
+.tag{animation:fl 6s -1s ease-in-out infinite alternate}
+.hero .wrap>div:first-child>*{animation:up .9s both}
+.hero .wrap>div:first-child>:nth-child(2){animation-delay:.12s}.hero .wrap>div:first-child>:nth-child(3){animation-delay:.24s}.hero .wrap>div:first-child>:nth-child(4){animation-delay:.36s}
+@keyframes dr{to{stroke-dashoffset:0}}@keyframes bt{50%{transform:scale(1.04)}}@keyframes fl{to{transform:translateY(-9px) rotate(5deg)}}@keyframes up{from{opacity:0;transform:translateY(20px)}}
+.story{display:grid;gap:1.5rem;justify-items:center}
+.path{counter-reset:none;display:grid;grid-template-columns:1fr;gap:0;margin:0;width:100%;max-width:340px;position:relative}
+.path li{counter-increment:none;padding:0 0 1.6rem 2.2rem;border-left:2px dashed var(--sage);margin-left:.6rem;position:relative;display:grid}
+.path li:last-child{padding-bottom:0}
+.path li:before{content:"";position:absolute;left:-.7rem;top:.2rem;width:1.1rem;height:1.1rem;border-radius:50%;background:var(--leaf);display:block;font:0;width:1.1rem}
+.path b{font:1.5rem "DM Serif Display",serif;color:#fff}.path span{color:#dfe8da}
+.vals-sec{background:var(--bege)}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.vals{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;margin-top:1.5rem}
+.vals svg,.ic svg{width:34px;height:34px;stroke:var(--leaf);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.vals>div{border-top:2px solid var(--leaf);padding-top:1.2rem}.vals h3{font-size:1.15rem;margin:.6rem 0 .3rem}
+.card{transition:opacity .7s,transform .3s,box-shadow .3s}.card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(43,74,50,.14)}
+.ic{width:60px;height:60px;border-radius:50%;background:#e4ecde;display:grid;place-items:center;margin-bottom:1rem;transition:background .3s}.card:hover .ic{background:var(--sage)}
+@media(max-width:860px){.mv,.vals{grid-template-columns:1fr}.hero-art{padding:0}.badge{right:.5rem;top:1rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.draw{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
@@ -129,9 +157,12 @@ form{grid-template-columns:1fr}
 <div class="cta-row"><a class="btn wa" href="#">Converse com nossa equipe</a><a class="btn ghost" href="#sobre">Conheça nossa proposta de cuidado</a></div>
 </div>
 <div class="hero-art">
-<!-- TROCAR: foto real (cuidador e pessoa idosa em ambiente residencial, interação natural). Coloque em assets/hero.jpg e descomente a linha abaixo -->
-<div class="frame"><!-- <img src="assets/hero.jpg" alt="Cuidador conversando com uma pessoa idosa na sala de casa"> --><small>Espaço reservado para a fotografia principal</small></div>
+<div class="art"><!-- Para usar foto real: coloque assets/hero.jpg (ela cobre a ilustração) --><svg viewBox="0 0 400 440" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path class="draw" d="M70 160 L200 62 L330 160" stroke="#2B4A32" stroke-width="10"/><rect x="226" y="70" width="22" height="46" rx="3" fill="#2B4A32" stroke="none"/></g>
+<g class="beat"><path d="M200 340 C85 258 66 176 128 146 C164 128 192 146 200 166 C208 146 236 128 272 146 C334 176 315 258 200 340Z" fill="#5E9B3A"/>
+<g fill="#fff"><circle cx="165" cy="204" r="17"/><rect x="143" y="224" width="44" height="64" rx="20"/><circle cx="236" cy="204" r="17"/><rect x="214" y="224" width="44" height="64" rx="20"/></g><path d="M187 250 q13 -10 27 0" stroke="#5E9B3A" stroke-width="6" fill="none" stroke-linecap="round"/></g>
+<g fill="#2B4A32"><g transform="translate(70 330)"><path class="lf" d="M0 0 C10 -26 38 -26 50 0 C38 26 10 26 0 0Z" fill="#5E9B3A"/></g><g transform="translate(300 345)"><path class="lf l2" d="M0 0 C10 -22 34 -22 44 0 C34 22 10 22 0 0Z" fill="#2B4A32"/></g><g transform="translate(40 230)"><path class="lf l3" d="M0 0 C8 -18 28 -18 36 0 C28 18 8 18 0 0Z" fill="#fff" opacity=".7"/></g><g transform="translate(325 250)"><path class="lf l3" d="M0 0 C8 -18 28 -18 36 0 C28 18 8 18 0 0Z" fill="#fff" opacity=".7"/></g></g></svg><img class="photo" src="assets/hero.jpg" alt="Cuidador conversando com uma pessoa idosa em casa" onerror="this.remove()"></div>
 <p class="tag">Cuidado que acolhe. Atenção que aproxima.</p>
+<div class="badge"><b data-n="10">0</b><span>anos de dedicação ao cuidado de idosos</span></div>
 </div>
 </div>
 </section>
@@ -151,22 +182,42 @@ form{grid-template-columns:1fr}
 <section class="about" id="sobre">
 <div class="wrap split">
 <div class="rv">
-<p class="kicker" style="color:var(--sage)">Sobre a Doce Lar Vita Care</p>
+<p class="kicker" style="color:var(--sage)">Quem somos</p>
 <h2>Cuidado humano, pensado para o seu lar.</h2>
-<p>A Doce Lar Vita Care nasceu com a proposta de aproximar o cuidado do ambiente em que as pessoas se sentem em casa. Nosso objetivo é facilitar o contato com famílias que procuram conhecer opções de cuidado domiciliar e encontrar uma solução alinhada às suas necessidades.</p>
-<p style="margin:1.5rem 0"><a class="btn light" href="#contato">Conheça nossas possibilidades de atendimento</a></p>
+<p>A Doce Lar Vita Care construiu sua história ao longo de 10 anos de dedicação ao cuidado de idosos em nossa casa de repouso, sempre pautada pelo amor, respeito, responsabilidade e compromisso com a qualidade de vida.</p>
+<p>Ao longo desses anos, aprendemos que cuidar vai muito além da assistência: é acolher, ouvir, respeitar, preservar a dignidade e proporcionar bem-estar em cada etapa da vida.</p>
+<p>Com essa experiência e o desejo de ampliar nossa missão, decidimos dar um novo passo: levar a qualidade, a confiança e o cuidado humanizado da Casa de Repouso até o conforto do lar de cada família.</p>
+<p>Assim, ampliamos nossa atuação para oferecer cuidados domiciliares, com assistência personalizada a idosos, pacientes em recuperação e pessoas que precisam de acompanhamento e suporte nas atividades diárias, respeitando as necessidades e a rotina de cada família.</p>
+<p style="margin-top:1.5rem"><a class="btn light" href="#cuidados">Conheça nossas possibilidades de atendimento</a></p>
 </div>
+<div class="story">
 <img src="assets/logo.png" alt="Marca Doce Lar Vita Care: casa, coração e folhas">
+<ol class="path"><li><b>10 anos</b><span>cuidando de idosos na casa de repouso</span></li><li><b>Hoje</b><span>o mesmo cuidado, no conforto do lar de cada família</span></li></ol>
+</div>
+</div>
+</section>
+<section class="vals-sec" id="valores">
+<div class="wrap">
+<div class="mv">
+<article class="card"><h3>Missão</h3><p>Proporcionar cuidado humanizado, seguro e individualizado aos idosos e às pessoas que necessitam de assistência, levando para cada lar a experiência adquirida ao longo dos anos. Nosso compromisso é promover a qualidade de vida, conforto, dignidade e bem-estar, oferecendo tranquilidade às famílias por meio de um atendimento pautado no respeito, no carinho, na responsabilidade e na excelência profissional.</p></article>
+<article class="card"><h3>Visão</h3><p>Ser reconhecida como uma empresa de referência em cuidados para idosos e assistência domiciliar, destacando-se pela qualidade dos serviços, pela confiança das famílias e pela excelência no atendimento humanizado, ampliando nossa atuação sem perder a essência do cuidado que construímos ao longo da nossa história.</p></article>
+</div>
+<h2 style="margin-top:3.5rem">Nossos valores</h2>
+<div class="vals">
+<div><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg><h3>Amor e humanização</h3><p>Cuidar de cada pessoa com carinho, empatia e atenção às suas necessidades.</p></div>
+<div><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><h3>Segurança e responsabilidade</h3><p>Atuar com compromisso, ética e atenção às boas práticas de cuidados.</p></div>
+<div><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg><h3>Respeito e dignidade</h3><p>Valorizar a história, as escolhas, a individualidade e os direitos de cada pessoa.</p></div>
+<div><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><h3>Excelência profissional</h3><p>Buscar aperfeiçoamento contínuo e qualidade em todos os serviços prestados.</p></div>
+</div>
 </div>
 </section>
 
 <section id="cuidados">
-<div class="wrap rv">
-<h2>Como podemos ajudar sua família?</h2>
-<p>Cada família chega com uma necessidade diferente. Conte a sua e conheça as possibilidades de atendimento para o seu caso.</p>
-<!-- PROVISÓRIO: serviços ainda NÃO confirmados pela empresa. Preencha o array SERVICES no script (nome, descricao) para exibir os cards. -->
+<div class="wrap">
+<h2 class="rv">Como podemos ajudar sua família?</h2>
+<p class="rv">Cuidados no conforto do lar, respeitando a rotina, a individualidade e as necessidades de cada pessoa.</p>
 <div id="svcs"></div>
-<div class="talk"><p>Quer saber se podemos apoiar a sua família? Fale com a nossa equipe e explique o que você precisa.</p><a class="btn wa" href="#">Consultar disponibilidade</a></div>
+<div class="talk rv"><p>Quer saber qual atendimento combina com a sua família? Fale com a nossa equipe e explique o que você precisa.</p><a class="btn wa" href="#">Consultar disponibilidade</a></div>
 </div>
 </section>
 
@@ -225,7 +276,7 @@ form{grid-template-columns:1fr}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© <span id="y"></span> Doce Lar Vita Care. Cuidado no conforto do seu lar.</span><span>Site por <a href="https://visz.dev" rel="noopener">VISZ.dev</a></span></div></footer>
+<footer><div class="wrap"><span>© <span id="y"></span> Doce Lar Vita Care. Uma história de cuidado que cresceu para chegar até você.</span><span>Site por <a href="https://visz.dev" rel="noopener">VISZ.dev</a></span></div></footer>
 
 <dialog id="dlg"><h3>Política de privacidade</h3><!-- PROVISÓRIO: substituir pelo texto jurídico oficial (LGPD) --><p style="margin:1rem 0">Os dados enviados neste formulário (nome, telefone, e-mail e mensagem) são usados somente para responder ao seu contato. Para solicitar acesso, correção ou exclusão, escreva para o e-mail da empresa. Texto provisório, a ser substituído pela política oficial.</p><button class="btn" onclick="dlg.close()">Fechar</button></dialog>
 
@@ -234,7 +285,13 @@ form{grid-template-columns:1fr}
 const WA_NUMBER="5571992907548"; // CONFIRMAR: número oficial do WhatsApp da empresa (formato 55+DDD+número)
 const WA_MSG="Olá! Conheci a Doce Lar Vita Care pelo site e gostaria de obter mais informações sobre os serviços de cuidado domiciliar.";
 const EMAILJS={service:"",template:"",key:""}; // PENDENTE: preencher com os dados do EmailJS. Enquanto vazio, o envio retorna erro (não simula sucesso).
-const SERVICES=[]; // PROVISÓRIO: [{nome:"",descricao:""}] só após confirmação da empresa
+const IC={home:"M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6",enf:"M9 3h6v6h6v6h-6v6H9v-6H3V9h6z",fisio:"M3 12h4l3-7 4 14 3-7h4",hosp:"M4 21V6l8-3 8 3v15M9 21v-5h6v5M12 8v4M10 10h4",cuid:"M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"};
+const SERVICES=[ // textos fornecidos pelo cliente
+{i:"home",nome:"Atendimento Domiciliar (Home care)",descricao:"Cuidados no conforto do lar respeitando a rotina, a individualidade e as necessidades do assistido, com opção de atendimento conforme o plano contratado."},
+{i:"enf",nome:"Assistência de Enfermagem",descricao:"Atendimento de enfermagem, acompanhamento de cuidados e procedimentos compatíveis com a indicação clínica, realizado por profissionais habilitados."},
+{i:"fisio",nome:"Fisioterapia e Reabilitação",descricao:"Atendimento voltado à mobilidade, funcionalidade e recuperação, conforme avaliação e plano terapêutico elaborado por profissionais habilitados."},
+{i:"hosp",nome:"Acompanhamento Hospitalar",descricao:"Presença e suporte ao paciente durante a internação, auxiliando nas necessidades cotidianas e proporcionando acolhimento."},
+{i:"cuid",nome:"Cuidadores de idosos",descricao:"Auxílio na higiene pessoal, alimentação, mobilidade, conforto, companhia e atividades da vida diária, conforme as necessidades de cada pessoa."}];
 /* ================================================== */
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const waURL="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(WA_MSG);
@@ -245,8 +302,10 @@ const sc=()=>hd.classList.toggle("solid",scrollY>20);sc();addEventListener("scro
 mb.onclick=()=>{const o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
 $$("nav a").forEach(a=>a.onclick=()=>{nav.classList.remove("open");mb.setAttribute("aria-expanded",false)});
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-$("#svcs").innerHTML=SERVICES.map(s=>`<article class="card"><h3>${esc(s.nome)}</h3><p>${esc(s.descricao)}</p><a class="btn ghost wa" href="${waURL}" target="_blank" rel="noopener">Pedir informações</a></article>`).join("");
+$("#svcs").innerHTML=SERVICES.map(s=>{const u="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("Olá! Conheci a Doce Lar Vita Care pelo site e gostaria de informações sobre: "+s.nome+".");return `<article class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="${IC[s.i]}"/></svg></div><h3>${esc(s.nome)}</h3><p>${esc(s.descricao)}</p><a class="btn ghost" href="${u}" target="_blank" rel="noopener">Pedir informações</a></article>`}).join("");
+$$("[data-n]").forEach(el=>{const n=+el.dataset.n;if(matchMedia("(prefers-reduced-motion:reduce)").matches){el.textContent=n;return}let t0;const st=t=>{t0??=t;const p=Math.min((t-t0)/1500,1);el.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(st)};setTimeout(()=>requestAnimationFrame(st),700)});
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+$$(".cols>div,.card,.vals>div,ol li,.diff li").forEach((el,i)=>{el.classList.add("rv");el.style.transitionDelay=(i%5)*90+"ms"});
 $$(".rv").forEach(el=>io.observe(el));
 $("#pv").onclick=e=>{e.preventDefault();$("#dlg").showModal()};
 /* formulário */
