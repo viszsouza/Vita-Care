@@ -134,6 +134,16 @@ form{grid-template-columns:1fr}
 .ic{width:60px;height:60px;border-radius:50%;background:#e4ecde;display:grid;place-items:center;margin-bottom:1rem;transition:background .3s}.card:hover .ic{background:var(--sage)}
 @media(max-width:860px){.mv,.vals{grid-template-columns:1fr}.hero-art{padding:0}.badge{right:.5rem;top:1rem}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}.draw{stroke-dashoffset:0}}
+
+#svcs{grid-template-columns:repeat(6,1fr);gap:1.5rem}
+#svcs .card{padding:0;overflow:hidden;display:flex;flex-direction:column;grid-column:span 2}
+#svcs .card:nth-child(-n+2){grid-column:span 3}
+.ph{aspect-ratio:3/2;overflow:hidden;background:var(--bege)}
+#svcs .card:nth-child(-n+2) .ph{aspect-ratio:16/10}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s}
+#svcs .card:hover .ph img{transform:scale(1.06)}
+.cb{padding:1.5rem 1.6rem 1.7rem;display:flex;flex-direction:column;flex:1}.cb .btn{margin-top:auto;align-self:flex-start}.cb p{margin-bottom:1.2rem}
+@media(max-width:860px){#svcs{grid-template-columns:1fr}#svcs .card,#svcs .card:nth-child(-n+2){grid-column:auto}}
 </style>
 </head>
 <body>
@@ -286,12 +296,13 @@ const WA_NUMBER="5571992907548"; // CONFIRMAR: número oficial do WhatsApp da em
 const WA_MSG="Olá! Conheci a Doce Lar Vita Care pelo site e gostaria de obter mais informações sobre os serviços de cuidado domiciliar.";
 const EMAILJS={service:"",template:"",key:""}; // PENDENTE: preencher com os dados do EmailJS. Enquanto vazio, o envio retorna erro (não simula sucesso).
 const IC={home:"M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6",enf:"M9 3h6v6h6v6h-6v6H9v-6H3V9h6z",fisio:"M3 12h4l3-7 4 14 3-7h4",hosp:"M4 21V6l8-3 8 3v15M9 21v-5h6v5M12 8v4M10 10h4",cuid:"M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"};
+const FILES={home:"AtendimentoDomiciliar.png",enf:"AssistenciaEnfermagem.png",fisio:"FisioterapiaReabilitação.png",hosp:"AcompanhamentoHospitalar.png",cuid:"Cuidadoresdeidosos.png"}; // nomes dos arquivos em assets/
 const SERVICES=[ // textos fornecidos pelo cliente
-{i:"home",nome:"Atendimento Domiciliar (Home care)",descricao:"Cuidados no conforto do lar respeitando a rotina, a individualidade e as necessidades do assistido, com opção de atendimento conforme o plano contratado."},
-{i:"enf",nome:"Assistência de Enfermagem",descricao:"Atendimento de enfermagem, acompanhamento de cuidados e procedimentos compatíveis com a indicação clínica, realizado por profissionais habilitados."},
-{i:"fisio",nome:"Fisioterapia e Reabilitação",descricao:"Atendimento voltado à mobilidade, funcionalidade e recuperação, conforme avaliação e plano terapêutico elaborado por profissionais habilitados."},
-{i:"hosp",nome:"Acompanhamento Hospitalar",descricao:"Presença e suporte ao paciente durante a internação, auxiliando nas necessidades cotidianas e proporcionando acolhimento."},
-{i:"cuid",nome:"Cuidadores de idosos",descricao:"Auxílio na higiene pessoal, alimentação, mobilidade, conforto, companhia e atividades da vida diária, conforme as necessidades de cada pessoa."}];
+{i:"home",alt:"Cuidadora de uniforme verde sorrindo para uma idosa na sala de casa",nome:"Atendimento Domiciliar (Home care)",descricao:"Cuidados no conforto do lar respeitando a rotina, a individualidade e as necessidades do assistido, com opção de atendimento conforme o plano contratado."},
+{i:"enf",alt:"Enfermeira atendendo uma idosa em casa, com a maleta da Doce Lar ao lado",nome:"Assistência de Enfermagem",descricao:"Atendimento de enfermagem, acompanhamento de cuidados e procedimentos compatíveis com a indicação clínica, realizado por profissionais habilitados."},
+{i:"fisio",alt:"Fisioterapeuta orientando exercício com halter a um paciente",nome:"Fisioterapia e Reabilitação",descricao:"Atendimento voltado à mobilidade, funcionalidade e recuperação, conforme avaliação e plano terapêutico elaborado por profissionais habilitados."},
+{i:"hosp",alt:"Acompanhante segurando a mão de um paciente internado e sorrindo",nome:"Acompanhamento Hospitalar",descricao:"Presença e suporte ao paciente durante a internação, auxiliando nas necessidades cotidianas e proporcionando acolhimento."},
+{i:"cuid",alt:"Cuidadora oferecendo um copo de água a uma idosa na poltrona",nome:"Cuidadores de idosos",descricao:"Auxílio na higiene pessoal, alimentação, mobilidade, conforto, companhia e atividades da vida diária, conforme as necessidades de cada pessoa."}];
 /* ================================================== */
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const waURL="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(WA_MSG);
@@ -302,7 +313,7 @@ const sc=()=>hd.classList.toggle("solid",scrollY>20);sc();addEventListener("scro
 mb.onclick=()=>{const o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
 $$("nav a").forEach(a=>a.onclick=()=>{nav.classList.remove("open");mb.setAttribute("aria-expanded",false)});
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-$("#svcs").innerHTML=SERVICES.map(s=>{const u="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("Olá! Conheci a Doce Lar Vita Care pelo site e gostaria de informações sobre: "+s.nome+".");return `<article class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="${IC[s.i]}"/></svg></div><h3>${esc(s.nome)}</h3><p>${esc(s.descricao)}</p><a class="btn ghost" href="${u}" target="_blank" rel="noopener">Pedir informações</a></article>`}).join("");
+$("#svcs").innerHTML=SERVICES.map(s=>{const u="https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent("Olá! Conheci a Doce Lar Vita Care pelo site e gostaria de informações sobre: "+s.nome+".");return `<article class="card"><div class="ph"><img src="${encodeURI("assets/"+FILES[s.i])}" alt="${esc(s.alt)}" loading="lazy"></div><div class="cb"><h3>${esc(s.nome)}</h3><p>${esc(s.descricao)}</p><a class="btn ghost" href="${u}" target="_blank" rel="noopener">Pedir informações</a></div></article>`}).join("");
 $$("[data-n]").forEach(el=>{const n=+el.dataset.n;if(matchMedia("(prefers-reduced-motion:reduce)").matches){el.textContent=n;return}let t0;const st=t=>{t0??=t;const p=Math.min((t-t0)/1500,1);el.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(st)};setTimeout(()=>requestAnimationFrame(st),700)});
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
 $$(".cols>div,.card,.vals>div,ol li,.diff li").forEach((el,i)=>{el.classList.add("rv");el.style.transitionDelay=(i%5)*90+"ms"});
